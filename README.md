@@ -1,4 +1,4 @@
-React component design system.
+React component design system. a
 
 # Development
 
