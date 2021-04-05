@@ -26,8 +26,6 @@ export interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-  console.log(styles);
-
   return <div>{props.label}</div>;
 };
 
