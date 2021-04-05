@@ -5,6 +5,7 @@ body {
   & *::before,
   & *::after {
     box-sizing: border-box;
+
     color: inherit;
     font-family: Graphik Web, Arial;
     -webkit-font-smoothing: antialiased;
