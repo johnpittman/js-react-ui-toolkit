@@ -8,10 +8,10 @@
   border: 0;
   border-radius: 3em;
   cursor: pointer;
-  background-color: #1ea7fd;
+  background-color: lightblue;
 
   &Label {
-    color: green;
+    color: pink;
   }
 }
 

@@ -42,6 +42,6 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: storybook-static
           exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
-          # autoAcceptChanges: true # 👈 Option to accept all changes
+          autoAcceptChanges: true # 👈 Option to accept all changes
           exitOnceUploaded: true
       
