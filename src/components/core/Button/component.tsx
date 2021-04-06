@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as styles from './style.module.css';
+import styles from './style.module.css';
 
 export interface ButtonProps {
   /**
@@ -27,8 +27,8 @@ export interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = (props) => {
   return (
-    <div>
-      <span>icon</span>
+    <div className={styles.Button}>
+      <span className={styles.ButtonLabel}>icon</span>
       <span>icon2</span>
       {props.label}
     </div>
