@@ -3,13 +3,13 @@ module.exports = ({ config }) => {
 
   // Use custom svg rules
   const fileLoaderRule = rules.find((rule) => rule.test.test('.svg'));
-  fileLoaderRule.exclude = /\.svg?$/;
+  fileLoaderRule.exclude = /\.svg$/;
 
   // Use custom css rules
   const cssLoaderRule = rules.find((rule) => rule.test.test('.css'));
-  cssLoaderRule.exclude = /\.module\.css?$/;
+  cssLoaderRule.exclude = /\.module\.css$/;
 
-  // Add loaders to proccess CSS modules, postcss and tailwindcss
+  // Add loaders to proccess CSS modules
   config.module.rules.push({
     test: /\.module\.css$/,
     use: [
@@ -28,9 +28,9 @@ module.exports = ({ config }) => {
     ]
   });
 
-  // use svgr for svg files
+  // Use svgr for svg files
   config.module.rules.push({
-    issuer: /\.(js|ts)x?$/,
+    issuer: /\.(js|ts)x$/,
     test: /\.svg$/,
     use: [
       {
