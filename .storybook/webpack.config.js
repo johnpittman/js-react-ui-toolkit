@@ -22,8 +22,7 @@ module.exports = ({ config }) => {
         }
       },
       {
-        loader: 'postcss-loader',
-        options: {}
+        loader: 'postcss-loader'
       }
     ]
   });
