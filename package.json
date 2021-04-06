@@ -1,5 +1,5 @@
 {
-  "name": "request",
+  "name": "react-design-system",
   "version": "0.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.js",
@@ -10,7 +10,6 @@
     "bench": "for f in $(ls src/**/__bench/**/*.bench.ts); do ts-node $f; done",
     "build": "npm run clean && ttsc --p tsconfig-build.json",
     "build:storybook": "build-storybook",
-    "chromatic": "build-storybook && npx chromatic --project-token=22636a548160 --storybook-build-dir storybook-static",
     "clean": "rm -rf lib",
     "lint": "npm run lint:eslint & npm run lint:stylelint",
     "lint:eslint": "eslint '**/*.{js,jsx,ts,tsx,json}' --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
@@ -24,21 +23,21 @@
   },
   "author": {
     "name": "John Pittman",
-    "email": "john@johnpittman.com",
+    "email": "johnrichardpittman@gmail.com",
     "url": "https://github.com/johnpittman"
   },
   "license": "MIT",
-  "description": "Wrapper of 'fetch' with enhanced functionality",
+  "description": "React Storybook design system",
   "keywords": [],
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnpittman/request.git"
+    "url": "git+https://github.com/johnpittman/react-design-system.git.git"
   },
   "bugs": {
-    "url": "https://github.com/johnpittman/request/issues"
+    "url": "https://github.com/johnpittman/react-design-system.git/issues"
   },
-  "homepage": "https://github.com/johnpittman/request#readme",
+  "homepage": "https://github.com/johnpittman/react-design-system.git#readme",
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
