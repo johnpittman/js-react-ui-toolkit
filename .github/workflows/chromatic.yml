@@ -37,7 +37,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          buildScriptName: build:storybook
           storybookBuildDir: storybook-static
           exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
           autoAcceptChanges: true # 👈 Option to accept all changes
