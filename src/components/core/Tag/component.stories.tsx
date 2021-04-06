@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Tag, { TagProps } from '#components/core/Tag';
+import Tag, { TagProps } from './component';
 
 export default {
   title: 'core/Tag',

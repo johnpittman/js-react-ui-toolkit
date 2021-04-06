@@ -1,3 +1,6 @@
+const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 module.exports = ({ config }) => {
   const rules = config.module.rules;
 
@@ -43,6 +46,16 @@ module.exports = ({ config }) => {
       }
     ]
   });
+
+  config.resolve.plugins.push(
+    new TsconfigPathsPlugin({
+      configFile: path.resolve(__dirname, '../tsconfig.json'),
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      logLevel: 'INFO',
+      baseUrl: path.resolve(__dirname, '../'),
+      mainFields: ['browser', 'main']
+    })
+  );
 
   return config;
 };
