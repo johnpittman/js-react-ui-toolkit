@@ -28,7 +28,7 @@ export interface ButtonProps {
 const Button: React.FC<ButtonProps> = (props) => {
   return (
     <div className={styles.Button}>
-      <span className={styles.ButtonLabel}>icon</span>
+      <span className={styles.ButtonLabel}>awefwe</span>
       <span>icon2</span>
       {props.label}
     </div>
