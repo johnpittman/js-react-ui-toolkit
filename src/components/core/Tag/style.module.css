@@ -11,7 +11,7 @@
   &AccentBar {
     width: 4px;
     height: 100%;
-
+    
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     background: var(--color-gray-400);
