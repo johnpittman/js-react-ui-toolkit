@@ -3,12 +3,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 function useEsbuildMinify(config, options) {
-  const terserIndex = config.optimization.minimizer.findIndex(
-    (minimizer) => minimizer.constructor.name === 'TerserPlugin'
-  );
-  if (terserIndex > -1) {
-    config.optimization.minimizer.splice(terserIndex, 1, new ESBuildMinifyPlugin(options));
-  }
+  config.optimization.minimizer = [new ESBuildMinifyPlugin(options)];
 }
 
 function useEsbuildLoader(config, options) {
@@ -24,20 +19,6 @@ function useEsbuildLoader(config, options) {
   if (tsxLoader) {
     tsxLoader.use.loader = 'esbuild-loader';
     tsxLoader.use.options = { ...options, loader: 'tsx' };
-  }
-
-  const jsLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.js'));
-
-  if (jsLoader) {
-    jsLoader.use.loader = 'esbuild-loader';
-    jsLoader.use.options = { ...options, loader: 'js' };
-  }
-
-  const jsxLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.jsx'));
-
-  if (jsxLoader) {
-    jsxLoader.use.loader = 'esbuild-loader';
-    jsxLoader.use.options = { ...options, loader: 'jsx' };
   }
 }
 
@@ -100,7 +81,8 @@ module.exports = ({ config }) => {
   );
 
   useEsbuildMinify(config, {
-    target: 'es2015' // Syntax to compile to (see options below for possible values)
+    target: 'es2015', // Syntax to compile to (see options below for possible values)
+    css: true
   });
 
   useEsbuildLoader(config, {
