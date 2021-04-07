@@ -20,6 +20,20 @@ function useEsbuildLoader(config, options) {
     tsxLoader.use.loader = 'esbuild-loader';
     tsxLoader.use.options = { ...options, loader: 'tsx' };
   }
+
+  const jsLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.js'));
+
+  if (jsLoader) {
+    jsLoader.use.loader = 'esbuild-loader';
+    jsLoader.use.options = { ...options, loader: 'js' };
+  }
+
+  const jsxLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.jsx'));
+
+  if (jsxLoader) {
+    jsxLoader.use.loader = 'esbuild-loader';
+    jsxLoader.use.options = { ...options, loader: 'jsx' };
+  }
 }
 
 module.exports = ({ config }) => {
