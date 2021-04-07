@@ -1,14 +1,14 @@
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const { ESBuildMinifyPlugin } = require('esbuild-loader');
+// const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 function useEsbuildMinify(config, options) {
-  const terserIndex = config.optimization.minimizer.findIndex(
-    (minimizer) => minimizer.constructor.name === 'TerserPlugin'
-  );
-  if (terserIndex > -1) {
-    config.optimization.minimizer.splice(terserIndex, 1, new ESBuildMinifyPlugin(options));
-  }
+  // const terserIndex = config.optimization.minimizer.findIndex(
+  //   (minimizer) => minimizer.constructor.name === 'TerserPlugin'
+  // );
+  // if (terserIndex > -1) {
+  //   config.optimization.minimizer.splice(terserIndex, 1, new ESBuildMinifyPlugin(options));
+  // }
 }
 
 function useEsbuildLoader(config, options) {
