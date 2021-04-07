@@ -2,17 +2,21 @@ const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
-function useEsbuildMinify(config, options) {
-  const terserIndex = config.optimization.minimizer.findIndex(
-    (minimizer) => minimizer.constructor.name === 'TerserPlugin'
-  );
-  if (terserIndex > -1) {
-    config.optimization.minimizer.splice(terserIndex, 1, new ESBuildMinifyPlugin(options));
-  }
-}
-
 module.exports = ({ config }) => {
   const rules = config.module.rules;
+
+  // Use custom typescript rules
+  // const typescriptLoaderRule = rules.find((rule) => rule.test.test('.tsx'));
+  // typescriptLoaderRule.exclude = /\.tsx?$/;
+
+  // config.module.rules.push({
+  //   test: /\.tsx?$/,
+  //   loader: 'esbuild-loader',
+  //   options: {
+  //     loader: 'tsx', // Or 'ts' if you don't need tsx
+  //     target: 'es2015'
+  //   }
+  // });
 
   // Use custom css rules
   const cssLoaderRule = rules.find((rule) => rule.test.test('.css'));
@@ -59,6 +63,13 @@ module.exports = ({ config }) => {
     ]
   });
 
+  config.optimization.minimizer = [
+    new ESBuildMinifyPlugin({
+      target: 'es2015', // Syntax to compile to (see options below for possible values)
+      css: true
+    })
+  ];
+
   config.resolve.plugins.push(
     new TsconfigPathsPlugin({
       configFile: path.resolve(__dirname, '../tsconfig.json'),
@@ -68,10 +79,6 @@ module.exports = ({ config }) => {
       mainFields: ['browser', 'main']
     })
   );
-
-  useEsbuildMinify(config, {
-    target: 'es2015' // Syntax to compile to (see options below for possible values)
-  });
 
   return config;
 };
