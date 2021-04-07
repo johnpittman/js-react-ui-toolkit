@@ -4,17 +4,17 @@
   display: flex;
   width: 118px;
   height: 38px;
-  background: var(--color-gray-200);
+  background: var(--color-purple-200);
 
-  border-radius: 5px;
+  border-radius: 3px;
 
   &AccentBar {
     width: 4px;
     height: 100%;
     
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    background: var(--color-gray-500);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background: var(--color-purple-400);
   }
 
   &Label {
