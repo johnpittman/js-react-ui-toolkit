@@ -4,7 +4,7 @@
     "alwaysStrict": true,
     "baseUrl": ".",
     "esModuleInterop": true,
-    "importsNotUsedAsValues": "error",
+    "importsNotUsedAsValues": "preserve",
     "jsx": "react",
     "lib": ["es2015", "es2016", "es2017", "esnext", "dom"],
     "module": "esnext",
@@ -12,13 +12,15 @@
     "moduleResolution": "Node",
     "noImplicitAny": false,
     "paths": {
-      "#components/*": ["./src/components"],
+      "#root/*": ["./*"],
       "#src/*": ["./src/*"],
-      "#root/*": ["./*"]
+      "#components/*": ["./src/components/*"],
+      "#styles/*": ["./src/styles/*"]
     },
     "plugins": [
       { "transform": "typescript-transform-paths" },
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+      { "transform": "typescript-transform-paths", "afterDeclarations": true },
+      { "name": "typescript-plugin-css-modules" }
     ],
     "pretty": true,
     "resolveJsonModule": true,
@@ -27,6 +29,11 @@
     "sourceMap": false,
     "strict": true,
     "typeRoots": ["node_modules/@types", "src/types"],
-    "types": ["node", "jest"]
-  }
+    "types": ["node", "jest"],
+    "declaration": true,
+    "declarationDir": "lib",
+    "outDir": "lib"
+  },
+  "exclude": ["src/**/__*"],
+  "include": ["src/**/*"]
 }
