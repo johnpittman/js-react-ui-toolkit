@@ -7,7 +7,7 @@
     "lib"
   ],
   "scripts": {
-    "bench": "for f in $(ls src/**/__bench/**/*.bench.ts); do ts-node $f; done",
+    "bench": "for f in $(ls src/**/__bench__/**/*.bench.ts); do ts-node $f; done",
     "build": "npm run clean && npm run build:css && npm run build:typescript",
     "build:css": "gulp css --gulpfile ./scripts/build.js",
     "build:typescript": "ttsc --p tsconfig-build.json",
@@ -41,13 +41,12 @@
   },
   "homepage": "https://github.com/johnpittman/react-design-system.git#readme",
   "peerDependencies": {
-    "react": "^16.14.0||^17.0.0",
-    "react-dom": "^16.14.0||^17.0.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^6.2.3",
     "@storybook/addon-links": "^6.2.3",
-    "@storybook/builder-webpack5": "^6.2.0-rc.13",
     "@storybook/react": "^6.2.3",
     "@types/jest": "^26.0.22",
     "@types/react": "^17.0.3",
