@@ -8,8 +8,7 @@ const projectPath = `${__dirname}/..`;
 function generateCss() {
   return gulp
     .src(`${projectPath}/src/**/*.css`)
-    .pipe(postcss([postcssImport()]))
-    .pipe(postcss([postcssNested()]))
+    .pipe(postcss([postcssImport(), postcssNested()]))
     .pipe(gulp.dest(`${projectPath}/lib`));
 }
 
