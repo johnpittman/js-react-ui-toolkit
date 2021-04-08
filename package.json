@@ -16,7 +16,7 @@
     "lint": "npm run lint:eslint & npm run lint:stylelint",
     "lint:eslint": "eslint '**/*.{js,jsx,ts,tsx,json}' --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
     "lint:staged": "lint-staged",
-    "lint:stylelint": "stylelint --fix --cache './src/**/*.{module.css,css}'",
+    "lint:stylelint": "stylelint --fix --cache './src/**/*.css' './src/**/*.module.css'",
     "test": "jest --runInBand --passWithNoTests --silent",
     "test:changed": "npm run test -- --changedSince=master",
     "test:watch": "npm run test -- --watch",
