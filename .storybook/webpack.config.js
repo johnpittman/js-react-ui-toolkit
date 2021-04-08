@@ -7,32 +7,22 @@ function useEsbuildMinify(config, options) {
 }
 
 function useEsbuildLoader(config, options) {
-  const tsLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.ts'));
+  const tsLoader = config.module.rules.find(
+    (rule) =>
+      rule.test && (rule.test.test('.ts') || rule.test.test('.tsx') || rule.test.test('.js') || rule.test.test('.jsx'))
+  );
 
   if (tsLoader) {
     tsLoader.use.loader = 'esbuild-loader';
-    tsLoader.use.options = { ...options, loader: 'ts' };
-  }
-
-  const tsxLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.tsx'));
-
-  if (tsxLoader) {
-    tsxLoader.use.loader = 'esbuild-loader';
-    tsxLoader.use.options = { ...options, loader: 'tsx' };
-  }
-
-  const jsLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.js'));
-
-  if (jsLoader) {
-    jsLoader.use.loader = 'esbuild-loader';
-    jsLoader.use.options = { ...options, loader: 'js' };
-  }
-
-  const jsxLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.jsx'));
-
-  if (jsxLoader) {
-    jsxLoader.use.loader = 'esbuild-loader';
-    jsxLoader.use.options = { ...options, loader: 'jsx' };
+    tsLoader.use.options = {
+      ...options,
+      loader: {
+        '.ts': 'ts',
+        '.tsx': 'tsx',
+        '.js': 'js',
+        '.jsx': 'jsx'
+      }
+    };
   }
 }
 
