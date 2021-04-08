@@ -4,7 +4,7 @@
   display: flex;
   width: 118px;
   height: 38px;
-  background: var(--color-purple-200);
+  background: var(--color-gray-200);
 
   border-radius: 3px;
 
@@ -14,7 +14,7 @@
     
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    background: var(--color-purple-400);
+    background: var(--color-gray-400);
   }
 
   &Label {

@@ -8,13 +8,15 @@ export interface TagProps {
   accentBar?: boolean;
 }
 
-const Tag: React.FC<TagProps> = (props) => {
+Tag.defaultProps = { label: '' };
+
+function Tag(props: TagProps) {
   return (
-    <div className={`${styles.tag}${props.className ? props.className : ''}`}>
+    <div className={`${styles.tag} ${props.className || ''}`}>
       {props.accentBar && <div className={styles.tagAccentBar} />}
       {props.label && <span className={styles.tagLabel}>{props.label}</span>}
     </div>
   );
-};
+}
 
 export default Tag;
