@@ -13,10 +13,8 @@
     "moduleResolution": "Node",
     "noImplicitAny": false,
     "paths": {
-      "#root/*": ["./*"],
-      "#src/*": ["./src/*"],
-      "#components/*": ["./src/components/*"],
-      "#styles/*": ["./src/styles/*"]
+      "~/*": ["./*"],
+      "#/*": ["./src/*"]
     },
     "plugins": [
       { "transform": "typescript-transform-paths" },
