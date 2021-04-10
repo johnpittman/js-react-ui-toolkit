@@ -46,10 +46,10 @@
     "react-dom": "^16.14.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.2.5",
-    "@storybook/addon-essentials": "^6.2.5",
-    "@storybook/addon-links": "^6.2.5",
-    "@storybook/react": "^6.2.5",
+    "@storybook/addon-actions": "^6.2.7",
+    "@storybook/addon-essentials": "^6.2.7",
+    "@storybook/addon-links": "^6.2.7",
+    "@storybook/react": "^6.2.7",
     "@types/jest": "^26.0.22",
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
