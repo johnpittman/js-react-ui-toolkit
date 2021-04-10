@@ -8,8 +8,6 @@ export interface TagProps {
   accentBar?: boolean;
 }
 
-Tag.defaultProps = { label: '' };
-
 function Tag(props: TagProps) {
   return (
     <div className={`${styles.tag} ${props.className || ''}`}>

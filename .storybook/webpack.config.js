@@ -2,6 +2,8 @@ const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 function useEsbuildMinify(config, options) {
   config.optimization.minimizer = [new ESBuildMinifyPlugin(options)];
 }
@@ -9,7 +11,8 @@ function useEsbuildMinify(config, options) {
 function useEsbuildLoader(config, options) {
   const tsLoader = config.module.rules.find(
     (rule) =>
-      rule.test && (rule.test.test('.ts') || rule.test.test('.tsx') || rule.test.test('.js') || rule.test.test('.jsx'))
+      !Array.isArray(rule.test) &&
+      (rule.test.test('.ts') || rule.test.test('.tsx') || rule.test.test('.js') || rule.test.test('.jsx'))
   );
 
   if (tsLoader) {
@@ -28,7 +31,7 @@ function useEsbuildLoader(config, options) {
 
 module.exports = ({ config }) => {
   // Use custom css rules
-  const cssLoaderRule = config.module.rules.find((rule) => rule.test.test('.css'));
+  const cssLoaderRule = config.module.rules.find((rule) => !Array.isArray(rule.test) && rule.test.test('.css'));
   cssLoaderRule.exclude = /\.module\.css$/;
 
   // Add loaders to proccess CSS modules
@@ -52,7 +55,7 @@ module.exports = ({ config }) => {
   });
 
   // Use custom svg rules
-  const fileLoaderRule = config.module.rules.find((rule) => rule.test.test('.svg'));
+  const fileLoaderRule = config.module.rules.find((rule) => !Array.isArray(rule.test) && rule.test.test('.svg'));
   fileLoaderRule.exclude = /\.svg$/;
 
   // Use svgr for svg files
@@ -84,7 +87,8 @@ module.exports = ({ config }) => {
 
   useEsbuildMinify(config, {
     target: 'es2015', // Syntax to compile to (see options below for possible values)
-    css: true
+    css: isProd,
+    sourcemap: !isProd
   });
 
   useEsbuildLoader(config, {

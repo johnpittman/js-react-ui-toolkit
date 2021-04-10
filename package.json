@@ -11,7 +11,7 @@
     "build": "npm run clean && npm run build:css && npm run build:typescript",
     "build:css": "gulp css --gulpfile ./scripts/build.js",
     "build:typescript": "ttsc --p tsconfig-build.json",
-    "build:storybook": "build-storybook",
+    "build:storybook": "NODE_ENV=production build-storybook",
     "clean": "rm -rf lib",
     "lint": "npm run lint:eslint & npm run lint:stylelint",
     "lint:eslint": "eslint '**/*.{js,jsx,ts,tsx,json}' --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
@@ -21,8 +21,7 @@
     "test:changed": "npm run test -- --changedSince=master",
     "test:watch": "npm run test -- --watch",
     "typecheck": "ttsc --p tsconfig-build.json --incremental --tsBuildInfoFile tsconfig.tsbuildinfo",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006"
   },
   "author": {
     "name": "John Pittman",
