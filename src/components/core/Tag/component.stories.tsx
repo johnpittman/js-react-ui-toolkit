@@ -17,7 +17,7 @@ const Template: Story<TagProps> = (args) => <Tag {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   accentBar: true,
-  label: 'Caravan'
+  label: 'Tag'
 };
 Default.parameters = {
   design: {
