@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  typecheck:
+  prebuild:
     name: 'Typecheck'
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +19,7 @@ jobs:
         with:
           check-latest: true
 
-      # Caches
+      # Install
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v2
@@ -27,68 +27,29 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Install dependencies
+        run: npm ci --no-audit --prefer-offline
+
+      # Typecheck
       - name: Cache tsc
         uses: actions/cache@v2
         with:
           path: ./tsconfig.tsbuildinfo
           key: ${{ runner.os }}-cache-tsc
 
-      # Install
-      - name: Install dependencies
-        run: npm ci --no-audit --prefer-offline
-
-      # Run
       - name: Typecheck
         run: npm run typecheck
 
-  test:
-    name: 'Test'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+      # Test
+      - name: Test
+        run: npm run test
 
-      # Setup environment
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          check-latest: true
-
-      # Caches
-      - name: Cache node modules
-        id: cache-npm
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-
+      
       # Install
       - name: Install dependencies
         run: npm ci --no-audit --prefer-offline
 
-      # Run
-      - name: Test
-        run: npm run test
-
-  lint:
-    name: 'Lint'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      # Setup environment
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          check-latest: true
-
-      # Caches
-      - name: Cache node modules
-        id: cache-npm
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-cache-npm-${{ hashFiles('**/package-lock.json') }}
-
+      # Lint
       - name: Cache eslint
         uses: actions/cache@v2
         with:
@@ -100,15 +61,11 @@ jobs:
         with:
           path: ./.stylelintcache
           key: ${{ runner.os }}-cache-stylelint
-      
-      # Install
-      - name: Install dependencies
-        run: npm ci --no-audit --prefer-offline
 
-      # Run
       - name: Lint
         run: npm run lint
 
+      # Commit
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.2
         with:
