@@ -27,10 +27,8 @@ function useEsbuildLoader(config, options) {
 }
 
 module.exports = ({ config }) => {
-  const rules = config.module.rules;
-
   // Use custom css rules
-  const cssLoaderRule = rules.find((rule) => rule.test.test('.css'));
+  const cssLoaderRule = config.module.rules.find((rule) => rule.test.test('.css'));
   cssLoaderRule.exclude = /\.module\.css$/;
 
   // Add loaders to proccess CSS modules
@@ -54,7 +52,7 @@ module.exports = ({ config }) => {
   });
 
   // Use custom svg rules
-  const fileLoaderRule = rules.find((rule) => rule.test.test('.svg'));
+  const fileLoaderRule = config.module.rules.find((rule) => rule.test.test('.svg'));
   fileLoaderRule.exclude = /\.svg$/;
 
   // Use svgr for svg files

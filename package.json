@@ -20,7 +20,7 @@
     "test": "jest --runInBand --passWithNoTests --silent",
     "test:changed": "npm run test -- --changedSince=master",
     "test:watch": "npm run test -- --watch",
-    "typecheck": "ttsc --p tsconfig-build.json -incremental --tsBuildInfoFile tsconfig-build.tsbuildinfo",
+    "typecheck": "ttsc --p tsconfig-build.json --incremental --tsBuildInfoFile tsconfig.tsbuildinfo",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
