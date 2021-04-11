@@ -6,7 +6,7 @@ import Tag, { TagProps } from './component';
 import { withDesign } from 'storybook-addon-designs';
 
 export default {
-  title: 'core/Tag',
+  title: 'atoms/Tag',
   component: Tag,
   decorators: [withDesign],
   argTypes: {}
@@ -22,6 +22,6 @@ Default.args = {
 Default.parameters = {
   design: {
     type: 'figma',
-    url: 'https://www.figma.com/file/Klm6pxIZSaJFiOMX5FpTul9F/storybook-addon-designs-sample?node-id=2%3A5'
+    url: 'https://www.figma.com/file/picLlABvGBcEEzwUFsA73v/2021-Design-System---Foundations?node-id=628%3A4'
   }
 };

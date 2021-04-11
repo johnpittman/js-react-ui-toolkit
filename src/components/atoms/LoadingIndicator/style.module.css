@@ -1,0 +1,20 @@
+body {
+  --loading-indicator-color: var(--text-gray-500);
+}
+
+.LoadingIndicator {
+  transform-origin: center center;
+  min-height: 12px;
+  min-width: 12px;
+  max-height: 100%;
+  max-width: 100%;
+  color: var(--loading-indicator-color);
+
+  animation: LoadingIndicatorRotate 1s linear infinite;
+}
+
+@keyframes LoadingIndicatorRotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

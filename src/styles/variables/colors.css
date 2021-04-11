@@ -1,4 +1,4 @@
-:root {
+body {
   --color-gray-100: #0f1113;
   --color-gray-200: #efeff1;
   --color-gray-300: #d9dbde;
@@ -35,4 +35,10 @@
   --color-red-300: #e23564;
   --color-red-400: #b61742;
   --color-red-500: #7d0e2c;
+
+  /* 
+  Text
+  */
+
+  --text-gray-500: rgba(102, 102, 102);
 }

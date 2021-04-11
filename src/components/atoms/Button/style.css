@@ -1,0 +1,152 @@
+.Button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 6px 12px;
+
+  color: #111314;
+  font-weight: 500;
+  font-size: 12px;
+
+  font-size: 14px;
+
+  text-decoration: none;
+
+  text-decoration: none;
+
+  background-color: white;
+
+  background-color: white;
+  border: 1px solid #d9dbde;
+  border-radius: 2px;
+
+  cursor: pointer !important;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--theme-1 {
+    color: white;
+
+    background-color: #41a741;
+    border: 0;
+  }
+
+  &--theme-2 {
+    color: white;
+
+    background-color: #2a2d30;
+    border: 0;
+  }
+
+  &--theme-3 {
+    color: white;
+
+    background-color: #276de2;
+    border: 0;
+  }
+
+  &--disabled {
+    color: var(--color-gray-400);
+
+    background-color: #f6f6f7;
+    box-shadow: none;
+
+    pointer-events: none;
+  }
+
+  /* Layout */
+  &-layout--rtl {
+    flex-direction: row-reverse;
+  }
+
+  &--circle {
+    border-radius: 50%;
+  }
+
+  &--floating {
+    box-shadow: -4px 2px 8px rgba(0, 0, 0, 0.08);
+
+    &:active {
+      box-shadow: none;
+
+      & svg {
+        height: 22px;
+        width: 22px;
+      }
+    }
+  }
+
+  &--transparent {
+    background-color: transparent;
+  }
+
+  /* Variants */
+  &-type {
+    /* Outlined */
+    &-outlined {
+      background: none;
+      border: solid 1px currentColor;
+      box-shadow: none;
+
+      &--theme-1 {
+        color: var(--color-gray-100);
+      }
+
+      &--theme-2 {
+        color: white;
+      }
+
+      &--disabled {
+        color: var(--color-gray-100);
+
+        /* color: var(--color-gray-500); */
+
+        border-color: var(--color-gray-100);
+
+        pointer-events: none;
+      }
+    }
+
+    /* Text */
+    &-text {
+      background: none;
+      border: 0;
+      box-shadow: none;
+
+      &--theme-1 {
+        color: var(--color-gray-100);
+      }
+
+      &--theme-2 {
+        color: white;
+      }
+
+      &--disabled {
+        color: var(--color-gray-400);
+
+        background: none;
+
+        pointer-events: none;
+      }
+    }
+  }
+
+  /* icon spacer */
+  & > div {
+    width: 8px;
+    height: 8px;
+  }
+
+  /*  SVG icon */
+  & > svg {
+    width: 12px;
+    height: 12px;
+
+    fill: currentColor;
+  }
+}
