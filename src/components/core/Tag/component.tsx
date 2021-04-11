@@ -10,9 +10,9 @@ export interface TagProps {
 
 function Tag(props: TagProps) {
   return (
-    <div className={`${styles.tag} ${props.className || ''}`}>
-      {props.accentBar && <div className={styles.tagAccentBar} />}
-      {props.label && <span className={styles.tagLabel}>{props.label}</span>}
+    <div className={`${styles.Tag} ${props.className || ''}`}>
+      {props.accentBar && <div className={styles.TagAccentBar} />}
+      {props.label && <span className={styles.TagLabel}>{props.label}</span>}
     </div>
   );
 }
