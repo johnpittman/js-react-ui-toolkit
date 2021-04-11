@@ -29,16 +29,16 @@ jobs:
 
       # Caches
       - name: Cache node modules
-        if: env.GIT_DIFF
         id: cache-npm
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache tsc
-        if: env.GIT_DIFF
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ./tsconfig.tsbuildinfo
           key: ${{ runner.os }}-cache-tsc
