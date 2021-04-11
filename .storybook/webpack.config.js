@@ -2,45 +2,36 @@ const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 function useEsbuildMinify(config, options) {
   config.optimization.minimizer = [new ESBuildMinifyPlugin(options)];
 }
 
 function useEsbuildLoader(config, options) {
-  const tsLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.ts'));
+  const tsLoader = config.module.rules.find(
+    (rule) =>
+      !Array.isArray(rule.test) &&
+      (rule.test.test('.ts') || rule.test.test('.tsx') || rule.test.test('.js') || rule.test.test('.jsx'))
+  );
 
   if (tsLoader) {
     tsLoader.use.loader = 'esbuild-loader';
-    tsLoader.use.options = { ...options, loader: 'ts' };
-  }
-
-  const tsxLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.tsx'));
-
-  if (tsxLoader) {
-    tsxLoader.use.loader = 'esbuild-loader';
-    tsxLoader.use.options = { ...options, loader: 'tsx' };
-  }
-
-  const jsLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.js'));
-
-  if (jsLoader) {
-    jsLoader.use.loader = 'esbuild-loader';
-    jsLoader.use.options = { ...options, loader: 'js' };
-  }
-
-  const jsxLoader = config.module.rules.find((rule) => rule.test && rule.test.test('.jsx'));
-
-  if (jsxLoader) {
-    jsxLoader.use.loader = 'esbuild-loader';
-    jsxLoader.use.options = { ...options, loader: 'jsx' };
+    tsLoader.use.options = {
+      ...options,
+      loader: {
+        '.ts': 'ts',
+        '.tsx': 'tsx',
+        '.js': 'js',
+        '.jsx': 'jsx'
+      }
+    };
   }
 }
 
 module.exports = ({ config }) => {
-  const rules = config.module.rules;
-
   // Use custom css rules
-  const cssLoaderRule = rules.find((rule) => rule.test.test('.css'));
+  const cssLoaderRule = config.module.rules.find((rule) => !Array.isArray(rule.test) && rule.test.test('.css'));
   cssLoaderRule.exclude = /\.module\.css$/;
 
   // Add loaders to proccess CSS modules
@@ -53,18 +44,23 @@ module.exports = ({ config }) => {
         options: {
           importLoaders: 1,
           modules: {
-            localIdentName: '[name]__[local]--[hash:base64:5]'
+            localIdentName: '[local]--[hash:base64:5]'
           }
         }
       },
       {
-        loader: 'postcss-loader'
+        loader: 'postcss-loader',
+        options: {
+          postcssOptions: {
+            config: path.resolve(__dirname, '../postcss.config.js')
+          }
+        }
       }
     ]
   });
 
   // Use custom svg rules
-  const fileLoaderRule = rules.find((rule) => rule.test.test('.svg'));
+  const fileLoaderRule = config.module.rules.find((rule) => !Array.isArray(rule.test) && rule.test.test('.svg'));
   fileLoaderRule.exclude = /\.svg$/;
 
   // Use svgr for svg files
@@ -96,7 +92,8 @@ module.exports = ({ config }) => {
 
   useEsbuildMinify(config, {
     target: 'es2015', // Syntax to compile to (see options below for possible values)
-    css: true
+    css: isProd,
+    sourcemap: !isProd
   });
 
   useEsbuildLoader(config, {

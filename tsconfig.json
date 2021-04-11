@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
@@ -12,10 +13,8 @@
     "moduleResolution": "Node",
     "noImplicitAny": false,
     "paths": {
-      "#root/*": ["./*"],
-      "#src/*": ["./src/*"],
-      "#components/*": ["./src/components/*"],
-      "#styles/*": ["./src/styles/*"]
+      "~/*": ["./*"],
+      "#/*": ["./src/*"]
     },
     "plugins": [
       { "transform": "typescript-transform-paths" },
@@ -29,11 +28,6 @@
     "sourceMap": false,
     "strict": true,
     "typeRoots": ["node_modules/@types", "src/types"],
-    "types": ["node", "jest"],
-    "declaration": true,
-    "declarationDir": "lib",
-    "outDir": "lib"
-  },
-  "exclude": ["src/**/__*"],
-  "include": ["src/**/*"]
+    "types": ["node", "jest"]
+  }
 }

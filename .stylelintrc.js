@@ -1,11 +1,22 @@
 module.exports = {
   extends: ['stylelint-config-rational-order'],
-  plugins: [
-    'stylelint-no-unsupported-browser-features',
-    'stylelint-order',
-    'stylelint-config-rational-order/plugin'
-  ],
+  plugins: ['stylelint-no-unsupported-browser-features', 'stylelint-order', 'stylelint-config-rational-order/plugin'],
   rules: {
+    'order/order': [
+      'dollar-variables',
+      'custom-properties',
+      'at-rules',
+      'declarations',
+      {
+        type: 'at-rule',
+        name: 'supports'
+      },
+      {
+        type: 'at-rule',
+        name: 'media'
+      },
+      'rules'
+    ],
     'order/properties-order': [],
     'plugin/rational-order': [
       true,
@@ -62,11 +73,7 @@ module.exports = {
       'always',
       {
         except: ['after-declaration', 'first-nested'],
-        ignore: [
-          'after-declaration',
-          'after-comment',
-          'inside-single-line-block'
-        ]
+        ignore: ['after-declaration', 'after-comment', 'inside-single-line-block']
       }
     ],
     'function-comma-newline-after': 'always-multi-line',
