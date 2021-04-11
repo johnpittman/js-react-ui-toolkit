@@ -100,9 +100,7 @@ jobs:
       - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
-            **/*
-            !**/*.yml
-            !**/*.md
+            **/*.{js,jsx,ts,tsx,json,html}
 
       # Setup environment
       - name: Use Node.js
