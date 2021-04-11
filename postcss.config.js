@@ -7,6 +7,10 @@ module.exports = {
     },
     // TODO: remove after demo
     // demo of css after minify. specifically merging media
+    'postcss-pxtorem': {
+      propList: ['*'],
+      mediaQuery: true
+    },
     'postcss-csso': {}
   }
 };
