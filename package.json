@@ -14,7 +14,7 @@
     "build:storybook": "NODE_ENV=production build-storybook",
     "build:watch": "gulp watch --gulpfile ./scripts/build.js",
     "clean": "rm -rf lib",
-    "lint": "npm run lint:eslint & npm run lint:stylelint",
+    "lint": "pm run lint:stylelint && npm run lint:eslint --",
     "lint:eslint": "eslint '**/*.{js,jsx,ts,tsx,json}' --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
     "lint:staged": "lint-staged",
     "lint:stylelint": "stylelint --fix --cache './src/**/*.css' './src/**/*.module.css'",
@@ -85,7 +85,7 @@
     "ts-jest": "^26.5.4",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "ttypescript": "^1.5.12",
-    "typescript": "^4.2.3",
+    "typescript": "^4.2.4",
     "typescript-plugin-css-modules": "^3.2.0",
     "typescript-transform-paths": "^2.2.3"
   }

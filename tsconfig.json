@@ -19,7 +19,12 @@
     "plugins": [
       { "transform": "typescript-transform-paths" },
       { "transform": "typescript-transform-paths", "afterDeclarations": true },
-      { "name": "typescript-plugin-css-modules" }
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "useConfig": true
+        }
+      }
     ],
     "pretty": true,
     "resolveJsonModule": true,

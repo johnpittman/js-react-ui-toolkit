@@ -142,7 +142,7 @@ jobs:
       # Run
       - name: Lint
         if: env.GIT_DIFF
-        run: npm run lint
+        run: npm run lint ${{ env.GIT_DIFF }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4.9.0
