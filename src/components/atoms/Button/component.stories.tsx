@@ -1,9 +1,8 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import { withDesign } from 'storybook-addon-designs';
 
 import Button, { ButtonProps } from './component';
-
-import { withDesign } from 'storybook-addon-designs';
 
 export default {
   title: 'atoms/Button',
