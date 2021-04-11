@@ -17,17 +17,23 @@ jobs:
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
 
-       # Caches
+      - uses: technote-space/get-diff-action@v4
+        with:
+          PATTERNS: |
+            src/**/*.*
+            .storybook/**/*.*
+            !src/**/__*__
+
+        # Caches
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+        if: env.GIT_DIFF
 
       # Install
       - name: Install dependencies
         run: npm ci --no-audit --prefer-offline
-
-      
-      
+        if: env.GIT_DIFF
