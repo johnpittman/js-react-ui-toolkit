@@ -11,8 +11,9 @@ body {
   height: 38px;
 
   color: var(--tag-color);
+
   background: var(--tag-bg);
-  
+
 
   border-radius: 3px;
 
