@@ -44,7 +44,7 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm ci --no-audit --prefer-offline
+        run: npm ci --no-audit
 
       # Run
       - name: Typecheck
@@ -64,16 +64,16 @@ jobs:
 
       # Setup environment
       - name: Use Node.js
-        if: env.GIT_DIFF
         uses: actions/setup-node@v2
+        if: env.GIT_DIFF
         with:
           check-latest: true
 
       # Caches
       - name: Cache node modules
-        if: env.GIT_DIFF
         id: cache-npm
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
@@ -97,11 +97,12 @@ jobs:
       - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
-            **/*.*
+            src/**/__*__
 
       # Setup environment
       - name: Use Node.js
         uses: actions/setup-node@v2
+        if: env.GIT_DIFF
         with:
           check-latest: true
 
@@ -109,28 +110,33 @@ jobs:
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ~/.npm
           key: ${{ runner.os }}-cache-npm-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache eslint
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ./.eslintcache
           key: ${{ runner.os }}-cache-eslint
 
       - name: Cache stylelint
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ./.stylelintcache
           key: ${{ runner.os }}-cache-stylelint
       
       # Install
       - name: Install dependencies
+        if: env.GIT_DIFF
         run: npm ci --no-audit --prefer-offline
 
       # Run
       - name: Lint
+        if: env.GIT_DIFF
         run: npm run lint
 
       - name: Commit changes

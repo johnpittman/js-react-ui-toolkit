@@ -20,8 +20,7 @@ jobs:
       - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
-            src/**/*.*
-            .storybook/**/*.*
+            +(src|.storybook)/**/*.*
             !src/**/__*__
 
         # Caches
@@ -37,3 +36,11 @@ jobs:
       - name: Install dependencies
         if: env.GIT_DIFF
         run: npm ci --no-audit --prefer-offline
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
