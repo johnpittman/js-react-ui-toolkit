@@ -110,7 +110,7 @@ jobs:
         run: npm run lint
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@vv4.9.0
+        uses: stefanzweifel/git-auto-commit-action@v4.9.0
         with:
           commit_message: 'style: format'
           branch: ${{ github.head_ref }}
