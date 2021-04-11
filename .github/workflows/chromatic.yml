@@ -28,10 +28,10 @@ jobs:
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-        if: env.GIT_DIFF
 
       # Install
       - name: Install dependencies
