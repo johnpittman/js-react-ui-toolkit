@@ -13,36 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
 
-       # Caches
+      - uses: technote-space/get-diff-action@v4
+        with:
+          PATTERNS: |
+            src/**/*.*
+            .storybook/**/*.*
+            !src/**/__*__
+
+        # Caches
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v2
+        if: env.GIT_DIFF
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
       # Install
       - name: Install dependencies
+        if: env.GIT_DIFF
         run: npm ci --no-audit --prefer-offline
-
-      - name: Build Storybook
-        run: npm run build:storybook
-
-        # 👇 Adds Chromatic as a step in the workflow
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        # Chromatic GitHub Action options
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: storybook-static
-          exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
-          # autoAcceptChanges: true # 👈 Option to accept all changes
-          exitOnceUploaded: true
-          skip: '@(renovate/**|dependabot/**)'
-      
