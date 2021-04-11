@@ -75,6 +75,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: technote-space/get-diff-action@v4
+        with:
+          PATTERNS: |
+            src/**/*.*
+            .storybook/**/*.*
+            !src/**/__*__
+
       # Setup environment
       - name: Use Node.js
         uses: actions/setup-node@v2
@@ -111,6 +118,7 @@ jobs:
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4.9.0
+        if: env.GIT_DIFF
         with:
           commit_message: 'style: format'
           branch: ${{ github.head_ref }}
