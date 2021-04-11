@@ -3,12 +3,14 @@ body {
 }
 
 .LoadingIndicator {
-  transform-origin: center center;
-  min-height: 12px;
   min-width: 12px;
-  max-height: 100%;
   max-width: 100%;
+  min-height: 12px;
+  max-height: 100%;
+
   color: var(--loading-indicator-color);
+
+  transform-origin: center center;
 
   animation: LoadingIndicatorRotate 1s linear infinite;
 }
