@@ -1,4 +1,4 @@
-import '#src/styles';
+import '#/styles';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -7,10 +7,5 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/
     }
-  },
-   /**
-     * display the top-level grouping as a "root" in the sidebar
-     * @type {Boolean}
-     */
-    showRoots: true
+  }
 };

@@ -13,14 +13,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: technote-space/get-diff-action@v4
+        with:
+          PATTERNS: |
+            src/**/*.{ts,tsx}
+
       # Setup environment
       - name: Use Node.js
+        if: env.GIT_DIFF
         uses: actions/setup-node@v2
         with:
           check-latest: true
 
       # Caches
       - name: Cache node modules
+        if: env.GIT_DIFF
         id: cache-npm
         uses: actions/cache@v2
         with:
@@ -28,17 +35,20 @@ jobs:
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
       - name: Cache tsc
+        if: env.GIT_DIFF
         uses: actions/cache@v2
         with:
-          path: ./tsconfig.tsbuildinfo.json
+          path: ./tsconfig.tsbuildinfo
           key: ${{ runner.os }}-cache-tsc
 
       # Install
       - name: Install dependencies
+        if: env.GIT_DIFF
         run: npm ci --no-audit --prefer-offline
 
       # Run
       - name: Typecheck
+        if: env.GIT_DIFF
         run: npm run typecheck
 
   test:
@@ -47,14 +57,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: technote-space/get-diff-action@v4
+        with:
+          PATTERNS: |
+            **/*.test.*
+
       # Setup environment
       - name: Use Node.js
+        if: env.GIT_DIFF
         uses: actions/setup-node@v2
         with:
           check-latest: true
 
       # Caches
       - name: Cache node modules
+        if: env.GIT_DIFF
         id: cache-npm
         uses: actions/cache@v2
         with:
@@ -63,10 +80,12 @@ jobs:
 
       # Install
       - name: Install dependencies
+        if: env.GIT_DIFF
         run: npm ci --no-audit --prefer-offline
 
       # Run
       - name: Test
+        if: env.GIT_DIFF
         run: npm run test
 
   lint:
@@ -74,6 +93,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - uses: technote-space/get-diff-action@v4
+        with:
+          PATTERNS: |
+            **/*.*
 
       # Setup environment
       - name: Use Node.js
@@ -110,7 +134,8 @@ jobs:
         run: npm run lint
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4.1.2
+        uses: stefanzweifel/git-auto-commit-action@v4.9.0
+        if: env.GIT_DIFF
         with:
           commit_message: 'style: format'
           branch: ${{ github.head_ref }}

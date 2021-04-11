@@ -1,4 +1,5 @@
 import { addons } from '@storybook/addons';
+import 'storybook-addon-designs/register';
 import theme from './theme'
 
 addons.setConfig({
