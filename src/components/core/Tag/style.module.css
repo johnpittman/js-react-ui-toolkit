@@ -14,7 +14,6 @@ body {
 
   background: var(--tag-bg);
 
-
   border-radius: 3px;
 
   @media (--screen-sm) {
