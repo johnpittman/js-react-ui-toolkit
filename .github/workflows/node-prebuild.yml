@@ -16,7 +16,9 @@ jobs:
       - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
-            src/**/*.{ts,tsx}
+            **/*.{ts,tsx}
+            **/tsconfig.json
+            **/tsconfig*.json
 
       # Setup environment
       - name: Use Node.js
@@ -97,7 +99,7 @@ jobs:
       - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
-            src/**/__*__
+            **/*
 
       # Setup environment
       - name: Use Node.js
