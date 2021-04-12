@@ -1,0 +1,20 @@
+/*
+Mobile first breakpoints
+
+Ex:
+    @media (--screen-md) {
+    // styles for small viewport
+    }
+*/
+
+body {
+  --screen-xs: 640px;
+  --screen-xs-max: 767px;
+  --screen-sm: 768px;
+  --screen-sm-max: 1023px;
+  --screen-md: 1024px;
+  --screen-md-max: 1279px;
+  --screen-lg: 1280px;
+  --screen-lg-max: 1535px;
+  --screen-xl: 1536px;
+}

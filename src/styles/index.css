@@ -1,6 +1,11 @@
+/* General */
+@import './variables/breakpoints.css';
 @import './variables/env.css';
-@import './variables/media.css';
-@import './variables/colors.css';
+@import './variables/rounding.css';
 
-/* Globals */
+/* Color */
+@import './variables/colors.css';
+@import './variables/theme.css';
+
+/* Setup */
 @import './global.css';

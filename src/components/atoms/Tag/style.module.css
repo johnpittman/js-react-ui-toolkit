@@ -1,7 +1,7 @@
 body {
-  --tag-color: var(--color-gray-500);
-  --tag-bg: var(--color-gray-200);
-  --tag-bar-bg: var(--color-gray-400);
+  --tag-color: var(--color-theme-2-500);
+  --tag-bg-color: var(--color-theme-2-200);
+  --tag-bar-bg-color: var(--color-theme-2-400);
   --tag-rounding: var(--round-sm);
 }
 
@@ -14,28 +14,32 @@ body {
 
   color: var(--tag-color);
 
-  background: var(--tag-bg);
+  background: var(--tag-bg-color);
 
   border-radius: var(--tag-rounding);
 
-  &Bar {
-    width: 4px;
-    height: 100%;
-
-    background: var(--tag-bar-bg);
-
-    border-top-left-radius: var(--tag-rounding);
-    border-bottom-left-radius: var(--tag-rounding);
+  @media (--screen-xs) {
+    background: red !important;
   }
+}
 
-  &Label {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    margin: 4px;
+.TagBar {
+  width: 4px;
+  height: 100%;
 
-    font-weight: 500;
-    font-size: 14px;
-  }
+  background-color: var(--tag-bar-bg-color);
+
+  border-top-left-radius: var(--tag-rounding);
+  border-bottom-left-radius: var(--tag-rounding);
+}
+
+.TagLabel {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+
+  font-weight: 500;
+  font-size: 14px;
 }

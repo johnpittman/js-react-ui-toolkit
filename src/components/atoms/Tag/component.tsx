@@ -11,7 +11,7 @@ export interface TagProps {
 function Tag(props: TagProps) {
   let className = styles.Tag;
 
-  if (className) {
+  if (props.className) {
     className += ` ${props.className}`;
   }
 
