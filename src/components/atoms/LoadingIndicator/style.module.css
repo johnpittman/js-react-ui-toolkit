@@ -1,5 +1,5 @@
 body {
-  --loading-indicator-color: var(--text-gray-500);
+  --loading-indicator-color: var(--color-1-500);
 }
 
 .LoadingIndicator {

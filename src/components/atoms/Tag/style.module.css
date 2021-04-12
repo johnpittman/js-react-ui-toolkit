@@ -1,7 +1,7 @@
 body {
-  --tag-color: var(--color-theme-2-500);
-  --tag-bg-color: var(--color-theme-2-200);
-  --tag-bar-bg-color: var(--color-theme-2-400);
+  --tag-color: var(--color-1-500);
+  --tag-bg-color: var(--color-1-200);
+  --tag-bar-bg-color: var(--color-1-400);
   --tag-rounding: var(--round-sm);
 }
 
@@ -18,8 +18,8 @@ body {
 
   border-radius: var(--tag-rounding);
 
-  @media (--screen-xs) {
-    background: red !important;
+  @media (--screen-lg) {
+    --tag-bg-color: var(--color-2-200);
   }
 }
 
@@ -31,6 +31,10 @@ body {
 
   border-top-left-radius: var(--tag-rounding);
   border-bottom-left-radius: var(--tag-rounding);
+
+  @media (--screen-lg) {
+    --tag-bar-bg-color: var(--color-2-400);
+  }
 }
 
 .TagLabel {

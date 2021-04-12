@@ -44,7 +44,9 @@ module.exports = ({ config }) => {
         options: {
           importLoaders: 1,
           modules: {
-            localIdentName: '[local]--[hash:base64:5]'
+            localIdentName: process.env.NODE_ENV === 'production'
+            ? '[hash:base64]'
+            : '[name]__[local]--[hash:base64:5]'
           }
         }
       },

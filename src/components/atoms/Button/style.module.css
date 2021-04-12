@@ -1,4 +1,5 @@
 body {
+  --button-bg-color: white;
 }
 
 .Button {
@@ -20,7 +21,7 @@ body {
 
   text-decoration: none;
 
-  background-color: white;
+  background-color: var(--button-bg-color);
 
   background-color: white;
   border: 1px solid #d9dbde;
