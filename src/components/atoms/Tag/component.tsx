@@ -9,8 +9,14 @@ export interface TagProps {
 }
 
 function Tag(props: TagProps) {
+  let className = styles.Tag;
+
+  if (className) {
+    className += ` ${props.className}`;
+  }
+
   return (
-    <div className={`${styles.Tag} ${props.className || ''}`}>
+    <div className={className}>
       {props.accentBar && <div className={styles.TagBar} />}
       {props.label && <span className={styles.TagLabel}>{props.label}</span>}
     </div>

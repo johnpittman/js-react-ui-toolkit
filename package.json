@@ -15,7 +15,7 @@
     "build:watch": "gulp watch --gulpfile ./scripts/build.js",
     "clean": "rm -rf lib",
     "lint": "npm run lint:stylelint && npm run lint:eslint --",
-    "lint:eslint": "eslint '**/*.{js,jsx,ts,tsx,json,html}' --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
+    "lint:eslint": "eslint . --ext js,jsx,ts,tsx,json,html --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
     "lint:staged": "lint-staged",
     "lint:stylelint": "stylelint --fix --cache './src/**/*.css' './src/**/*.module.css'",
     "test": "jest --runInBand --passWithNoTests --silent",

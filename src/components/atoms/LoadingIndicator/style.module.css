@@ -3,6 +3,12 @@ body {
 }
 
 .LoadingIndicator {
+  @keyframes LoadingIndicatorRotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   min-width: 12px;
   max-width: 100%;
   min-height: 12px;
@@ -13,10 +19,4 @@ body {
   transform-origin: center center;
 
   animation: LoadingIndicatorRotate 1s linear infinite;
-}
-
-@keyframes LoadingIndicatorRotate {
-  100% {
-    transform: rotate(360deg);
-  }
 }

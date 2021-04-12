@@ -1,3 +1,6 @@
+body {
+}
+
 .Button {
   display: flex;
   flex-direction: row;
@@ -29,7 +32,7 @@
     outline: none;
   }
 
-  &--theme-1 {
+  &[data-theme='1'] {
     color: white;
 
     background-color: #41a741;
@@ -135,18 +138,11 @@
       }
     }
   }
+}
 
-  /* icon spacer */
-  & > div {
-    width: 8px;
-    height: 8px;
-  }
+.ButtonIcon {
+  width: 12px;
+  height: 12px;
 
-  /*  SVG icon */
-  & > svg {
-    width: 12px;
-    height: 12px;
-
-    fill: currentColor;
-  }
+  fill: currentColor;
 }

@@ -2,6 +2,7 @@ body {
   --tag-color: var(--color-gray-500);
   --tag-bg: var(--color-gray-200);
   --tag-bar-bg: var(--color-gray-400);
+  --tag-rounding: var(--round-sm);
 }
 
 .Tag {
@@ -15,7 +16,7 @@ body {
 
   background: var(--tag-bg);
 
-  border-radius: 3px;
+  border-radius: var(--tag-rounding);
 
   &Bar {
     width: 4px;
@@ -23,8 +24,8 @@ body {
 
     background: var(--tag-bar-bg);
 
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: var(--tag-rounding);
+    border-bottom-left-radius: var(--tag-rounding);
   }
 
   &Label {

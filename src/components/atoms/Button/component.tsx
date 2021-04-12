@@ -2,13 +2,12 @@ import React, { useState, useEffect, ReactNode } from 'react';
 
 import LoaderSpinner from '#/components/atoms/LoadingIndicator';
 
-import './style.css';
+import styles from './style.module.css';
 
 export interface ButtonProps {
   id?: any;
   async?: boolean; // button will show spinner as soon as it is clicked
   className?: string;
-  style?: any;
   theme?: null | '1' | '2' | '3';
   disabled?: boolean;
   icon?: ReactNode;
@@ -25,8 +24,8 @@ export interface ButtonProps {
 
 function Button(props: ButtonProps) {
   let [loading, setIsLoading] = useState(props.loading);
-  let baseClassName = 'Button';
-  let className = baseClassName;
+  let baseClassName = styles.Button;
+  let className = styles.Button;
   let disabled = props.disabled || loading;
 
   if (props.layoutDirection === 'rtl') {
@@ -44,7 +43,7 @@ function Button(props: ButtonProps) {
   } else if (props.disabled || loading) {
     className += ` ${baseClassName}--disabled`;
   } else if (props.theme) {
-    className += ` ${baseClassName}--theme-${props.theme}`;
+    className += ` ${styles[`ButtonTheme${props.theme}`]}`;
   }
 
   if (props.transparent) {
@@ -83,7 +82,7 @@ function Button(props: ButtonProps) {
 
   // adding floating to button causes error in console on render
   return (
-    <button className={className} style={props.style} type="button" disabled={disabled} onClick={handleClick}>
+    <button className={className} type="button" disabled={disabled} data-theme={props.theme} onClick={handleClick}>
       {icon}
       {props.label && icon && <div className={`${baseClassName}__icon-spacer`} />}
       {props.label}
