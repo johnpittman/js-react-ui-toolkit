@@ -20,7 +20,6 @@ Default.args = {
 };
 Default.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/picLlABvGBcEEzwUFsA73v/2021-Design-System---Foundations?node-id=628%3A4'
+    type: 'figma'
   }
 };
