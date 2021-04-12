@@ -1,0 +1,7 @@
+body {
+  --round: 9999px;
+  --round-none: 0;
+  --round-sm: 2px;
+  --round-md: 4px;
+  --round-lg: 8px;
+}
