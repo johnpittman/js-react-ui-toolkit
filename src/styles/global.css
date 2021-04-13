@@ -2,8 +2,11 @@ body {
   box-sizing: border-box;
   margin: 0;
 
-  color: var(--color-gray-100);
   font-family: Arial;
+
+  @media (--screen-sm) {
+    background: var(--tag-bar-bg-color-theme-1);
+  }
 
   *,
   *::before,

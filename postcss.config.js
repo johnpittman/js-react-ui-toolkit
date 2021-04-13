@@ -22,12 +22,14 @@ module.exports = {
     // Optimization
     // 'postcss-short-css-vars': {}, // Application build only. Does not work with nesting yet. 04/10/2021
     'postcss-pxtorem': {
-      propList: ['*'],
-      mediaQuery: true
+      // propList: ['*']
+      // mediaQuery: true
     },
     'postcss-color-converter': {
       outputColorFormat: 'hex'
     },
-    'postcss-csso': {}
+    'postcss-csso': {
+      forceMediaMerge: true
+    }
   }
 };

@@ -9,7 +9,7 @@ export interface LoadingIndicatorProps {
 function LoadingIndicator(props: LoadingIndicatorProps) {
   let className = styles.LoadingIndicator;
 
-  if (className) {
+  if (props.className) {
     className += ` ${props.className}`;
   }
 

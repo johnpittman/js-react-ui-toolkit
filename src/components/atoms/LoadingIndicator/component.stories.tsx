@@ -12,7 +12,7 @@ export default {
 } as Meta;
 
 const Template: Story<LoadingIndicatorProps> = (args) => (
-  <div style={{ height: 50 }}>
+  <div style={{ display: 'flex', justifyContent: 'flex-start', height: 50 }}>
     <LoadingIndicator {...args} />
   </div>
 );

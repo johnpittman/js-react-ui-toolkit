@@ -10,7 +10,7 @@ import '@johnpittman/react-design-system/lib/components/<group/<name>
 
 ## Styles
 
-### Importing through JavaScript
+### Import by JavaScript
 
 #### Full
 
@@ -18,13 +18,7 @@ import '@johnpittman/react-design-system/lib/components/<group/<name>
 import '@johnpittman/react-design-system/lib/styles
 ```
 
-### Import through CSS(recommended)
-
-NOTE: Some modern bundler will inject CSS into the JavaScript payload which nullifies
-this benefit.
-
-- Importing through CSS allows the bundle to bundle all the CSS into a single file.
-- Network optimization since importing through JavaScript will generate separate CSS files that will require multiple network requests to load all critical CSS.
+### Import by CSS
 
 #### Full
 
