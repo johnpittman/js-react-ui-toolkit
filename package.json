@@ -16,7 +16,7 @@
     "lint": "npm run lint:stylelint && npm run lint:eslint --",
     "lint:eslint": "eslint . --ext js,jsx,ts,tsx,json,html --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
     "lint:staged": "lint-staged",
-    "lint:stylelint": "stylelint --fix --cache './src/**/*.css' './src/**/*.module.css'",
+    "lint:stylelint": "stylelint './src/**/*.css' './src/**/*.module.css' --ignore-path .gitignore --fix --cache",
     "test": "jest --runInBand --passWithNoTests --silent",
     "test:changed": "npm run test -- --changedSince=master",
     "test:watch": "npm run test -- --watch",
@@ -47,8 +47,8 @@
   },
   "devDependencies": {
     "@johnpittman/eslint-config": "*",
-    "@johnpittman/prettier-config": "*",
     "@johnpittman/postcss-config": "*",
+    "@johnpittman/prettier-config": "*",
     "@johnpittman/stylelint-config": "*",
     "@storybook/addon-actions": "^6.2.7",
     "@storybook/addon-essentials": "^6.2.7",
