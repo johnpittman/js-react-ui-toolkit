@@ -128,7 +128,7 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm ci @johnpittman/eslint-config --no-audit --prefer-offline
+        run: npm i @johnpittman/eslint-config --no-audit --prefer-offline
 
       # Run
       - name: ESLint
@@ -179,7 +179,7 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm ci @johnpittman/stylelint-config --no-audit --prefer-offline
+        run: npm i @johnpittman/stylelint-config --no-audit --prefer-offline
 
       # Run
       - name: Stylelint
