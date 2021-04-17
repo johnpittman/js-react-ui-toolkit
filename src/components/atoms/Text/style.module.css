@@ -1,0 +1,17 @@
+body {
+}
+
+.Text {
+  margin: 0;
+}
+
+.Text--caps {
+  letter-spacing: 2.4px;
+}
+
+.Text--no-wrap {
+  overflow: 'hidden';
+
+  white-space: 'nowrap';
+  text-overflow: 'ellipsis';
+}

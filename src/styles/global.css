@@ -2,11 +2,9 @@ body {
   box-sizing: border-box;
   margin: 0;
 
-  font-family: Arial;
+  font-size: 1rem;
 
-  @media (--screen-sm) {
-    background: var(--tag-bar-bg-color-theme-1);
-  }
+  font-family: Arial;
 
   *,
   *::before,

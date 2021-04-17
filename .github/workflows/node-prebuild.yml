@@ -46,7 +46,7 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm ci --no-audit
+        run: npm ci --no-audit --prefer-offline
 
       # Run
       - name: Typecheck
@@ -91,8 +91,8 @@ jobs:
         if: env.GIT_DIFF
         run: npm run test
 
-  lint:
-    name: 'Lint'
+  eslint:
+    name: 'Lint - JavaScript'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -125,6 +125,50 @@ jobs:
           path: ./.eslintcache
           key: ${{ runner.os }}-cache-eslint
 
+      # Install
+      - name: Install dependencies
+        if: env.GIT_DIFF
+        run: npm ci @johnpittman/eslint-config --no-audit --prefer-offline
+
+      # Run
+      - name: ESLint
+        if: env.GIT_DIFF
+        run: npm run lint:eslint
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.9.0
+        if: env.GIT_DIFF
+        with:
+          commit_message: 'style: format'
+          branch: ${{ github.head_ref }}
+
+  stylelint:
+    name: 'Lint - Styles'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: technote-space/get-diff-action@v4
+        with:
+          PATTERNS: |
+            **/*.{module.css,css}
+
+      # Setup environment
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        if: env.GIT_DIFF
+        with:
+          check-latest: true
+
+      # Caches
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v2
+        if: env.GIT_DIFF
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-cache-npm-${{ hashFiles('**/package-lock.json') }}
+
       - name: Cache stylelint
         uses: actions/cache@v2
         if: env.GIT_DIFF
@@ -135,12 +179,12 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm ci --no-audit --prefer-offline
+        run: npm ci @johnpittman/stylelint-config --no-audit --prefer-offline
 
       # Run
-      - name: Lint
+      - name: Stylelint
         if: env.GIT_DIFF
-        run: npm run lint
+        run: npm run lint:stylelint
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4.9.0

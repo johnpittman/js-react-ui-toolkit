@@ -1,6 +1,6 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
-import LoaderSpinner from '#/components/atoms/LoadingIndicator';
+import LoaderSpinner from '@/components/atoms/LoadingIndicator';
 
 import styles from './style.module.css';
 
@@ -20,6 +20,7 @@ export interface ButtonProps {
   type?: string;
   shape?: 'circle';
   onClick?: any;
+  p;
 }
 
 function Button(props: ButtonProps) {
