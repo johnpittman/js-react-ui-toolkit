@@ -92,7 +92,7 @@ jobs:
         run: npm run test
 
   eslint:
-    name: 'Lint - Scripts'
+    name: 'ESLint'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -132,10 +132,8 @@ jobs:
         run: npm ci --no-audit --prefer-offline --only-production --ignore-scripts
 
       # Run
-      - uses: tinovyatkin/action-eslint@v1
-        with:
-          repo-token: ${{secrets.GH_TOKEN}}
-          check-name: eslint
+      - name: ESLint
+        if: env.GIT_DIFF
         run: npm run lint:eslint
 
       - name: Commit changes
@@ -146,7 +144,7 @@ jobs:
           branch: ${{ github.head_ref }}
 
   stylelint:
-    name: 'Lint - Styles'
+    name: 'Stylelint'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
