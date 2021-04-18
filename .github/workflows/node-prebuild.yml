@@ -47,6 +47,8 @@ jobs:
       - name: Install dependencies
         if: env.GIT_DIFF
         run: npm ci --no-audit --prefer-offline
+        env:
+          HUSKY_SKIP_INSTALL: 1
 
       # Run
       - name: Typecheck
@@ -85,6 +87,8 @@ jobs:
       - name: Install dependencies
         if: env.GIT_DIFF
         run: npm ci --no-audit --prefer-offline
+        env:
+          HUSKY_SKIP_INSTALL: 1
 
       # Run
       - name: Test
@@ -128,7 +132,9 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm i @johnpittman/eslint-config --no-audit --prefer-offline
+        run: npm ci @johnpittman/eslint-config --no-audit --prefer-offline
+        env:
+          HUSKY_SKIP_INSTALL: 1
 
       # Run
       - name: ESLint
@@ -179,7 +185,9 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm i @johnpittman/stylelint-config --no-audit --prefer-offline
+        run: npm ci @johnpittman/stylelint-config --no-audit --prefer-offline
+        env:
+          HUSKY_SKIP_INSTALL: 1
 
       # Run
       - name: Stylelint

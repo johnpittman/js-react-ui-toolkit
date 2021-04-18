@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('~/../node-config-postcss')()
+  ...require('@johnpittman/postcss-config')()
 };
