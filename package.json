@@ -49,7 +49,7 @@
     "@johnpittman/eslint-config": "*",
     "@johnpittman/postcss-config": "*",
     "@johnpittman/prettier-config": "*",
-    "@johnpittman/stylelint-config": "*",
+    "@johnpittman/stylelint-config": "0.0.1",
     "@storybook/addon-actions": "^6.2.7",
     "@storybook/addon-essentials": "^6.2.7",
     "@storybook/addon-links": "^6.2.7",
