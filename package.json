@@ -16,7 +16,7 @@
     "lint": "npm run lint:stylelint && npm run lint:eslint --",
     "lint:eslint": "eslint . --ext js,jsx,ts,tsx,json,html --ignore-pattern '*-lock.json' --ignore-path '.gitignore' --fix --cache",
     "lint:staged": "lint-staged",
-    "lint:stylelint": "stylelint './src/**/*.css' './src/**/*.module.css' --ignore-path .gitignore --fix --cache",
+    "lint:stylelint": "stylelint '**/*.css' '**/*.module.css' --ignore-path .gitignore --fix --cache",
     "prepare": "is-ci || husky install",
     "test": "jest --runInBand --passWithNoTests --silent",
     "test:changed": "npm run test -- --changedSince=master",
