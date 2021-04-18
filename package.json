@@ -10,7 +10,7 @@
     "build": "npm run clean && npm run build:css && npm run build:js --",
     "build:css": "gulp css --gulpfile ./scripts/build.js",
     "build:js": "ttsc --p tsconfig-build.json",
-    "build:storybook": "NODE_ENV=production build-storybook",
+    "build:storybook": "build-storybook",
     "build:watch": "gulp watch --gulpfile ./scripts/build.js",
     "clean": "rm -rf lib",
     "lint": "npm run lint:stylelint && npm run lint:eslint --",

@@ -2,8 +2,6 @@ const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
-const isProd = process.env.NODE_ENV === 'production';
-
 function useEsbuildMinify(config, options) {
   config.optimization.minimizer = [new ESBuildMinifyPlugin(options)];
 }
@@ -94,8 +92,8 @@ module.exports = ({ config }) => {
 
   useEsbuildMinify(config, {
     target: 'es2015', // Syntax to compile to (see options below for possible values)
-    css: isProd,
-    sourcemap: !isProd
+    css: true,
+    sourcemap: true
   });
 
   useEsbuildLoader(config, {
