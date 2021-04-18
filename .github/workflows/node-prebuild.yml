@@ -128,7 +128,8 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm ci @johnpittman/eslint-config --no-audit --prefer-offline --only-production --ignore-scripts
+        # Skip husky install: --only-production --ignore-scripts
+        run: npm ci --no-audit --prefer-offline --only-production --ignore-scripts
 
       # Run
       - name: ESLint
@@ -179,7 +180,7 @@ jobs:
       # Install
       - name: Install dependencies
         if: env.GIT_DIFF
-        run: npm ci @johnpittman/stylelint-config --no-audit --prefer-offline --only-production --ignore-scripts
+        run: npm ci --no-audit --prefer-offline --only-production --ignore-scripts
 
       # Run
       - name: Stylelint
