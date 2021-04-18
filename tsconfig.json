@@ -31,5 +31,6 @@
     "strict": true,
     "typeRoots": ["node_modules/@types", "src/types"],
     "types": ["node", "jest"]
-  }
+  },
+  "include": ["src/**/*"]
 }
