@@ -132,8 +132,10 @@ jobs:
         run: npm ci --no-audit --prefer-offline --only-production --ignore-scripts
 
       # Run
-      - name: ESLint
-        if: env.GIT_DIFF
+      - uses: tinovyatkin/action-eslint@v1
+        with:
+          repo-token: ${{secrets.GH_TOKEN}}
+          check-name: eslint
         run: npm run lint:eslint
 
       - name: Commit changes
