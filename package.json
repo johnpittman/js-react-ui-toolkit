@@ -47,10 +47,10 @@
     "react-intl": "^5.15.8"
   },
   "devDependencies": {
-    "@johnpittman/eslint-config": "^0.0.1",
+    "@johnpittman/eslint-config": "*",
     "@johnpittman/postcss-config": "*",
     "@johnpittman/prettier-config": "*",
-    "@johnpittman/stylelint-config": "0.0.1",
+    "@johnpittman/stylelint-config": "*",
     "@storybook/addon-actions": "^6.2.7",
     "@storybook/addon-essentials": "^6.2.7",
     "@storybook/addon-links": "^6.2.7",
@@ -59,7 +59,7 @@
     "chromatic": "^5.7.1",
     "css-loader": "^5.2.0",
     "esbuild-loader": "^2.11.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-postcss": "^9.0.0",
     "husky": "^4.3.8",
     "jest": "^26.6.3",
