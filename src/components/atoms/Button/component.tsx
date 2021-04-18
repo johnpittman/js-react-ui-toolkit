@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
-import LoaderSpinner from '@/components/atoms/LoadingIndicator';
+import LoadingIndicator from '>/components/atoms/LoadingIndicator';
 
 import styles from './style.module.css';
 
@@ -63,7 +63,7 @@ function Button(props: ButtonProps) {
     className += ` ${props.className}`;
   }
 
-  let icon = loading ? <LoaderSpinner /> : props.icon;
+  let icon = loading ? <LoadingIndicator /> : props.icon;
 
   let handleClick = (event: any) => {
     if (props.async) {
