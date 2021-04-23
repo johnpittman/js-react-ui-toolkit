@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
-import LoadingIndicator from '>/components/atoms/LoadingIndicator';
+import LoadingIndicator from '>/components/loaders/LoadingIndicator';
 
 import styles from './style.module.css';
 
